@@ -14,6 +14,10 @@ class FedoraOpenIdConnect(OpenIdConnectAuth):
     To use it, you need to set the SOCIAL_AUTH_FEDORA_OIDC_KEY and
     SOCIAL_AUTH_FEDORA_OIDC_SECRET configuration variables to the client_id and
     client_secret values that the Fedora Infrastructure gave you.
+
+    If you are connecting to the staging environment in the Fedora infrastructure,
+    you also need to set SOCIAL_AUTH_FEDORA_OIDC_OIDC_ENDPOINT to
+    "https://id.stg.fedoraproject.org".
     """
 
     name = "fedora-oidc"
@@ -26,6 +30,7 @@ class FedoraOpenIdConnect(OpenIdConnectAuth):
         "https://id.fedoraproject.org/scope/agreements",
         "https://id.fedoraproject.org/scope/groups",
     ]
+    TOKEN_ENDPOINT_AUTH_METHOD = "client_secret_post"
 
 
 class FedoraOpenId(OpenIdAuth):
